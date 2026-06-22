@@ -18,7 +18,15 @@ Optional:
 - `wait_until`: `load`, `domcontentloaded`, `networkidle0`, `networkidle2`
 - `delay_ms`: `0..30000`
 - `scroll_to_bottom`, `dismiss_cookie_consent`, `extract_text`
-- `auth`: per-request target-site auth
+- `auth`: per-request target-site auth, never the MCP API key
+
+`auth` modes:
+
+- `basic`: `username`, `password`
+- `token`: `token`, sent as `Authorization: Bearer <token>`
+- `api_key`: `api_key.header`, `api_key.value`
+- `cookie`: `cookie.name`, `cookie.value`, optional `cookie.domain`
+- `custom_headers`: `headers`, limited to 10 entries
 
 Returns PNG image content plus JSON metadata.
 
@@ -30,10 +38,12 @@ Optional:
 
 - `image1_name`, `image2_name`
 - `image1_text`, `image2_text`
-- `scopes`
+- `scopes`: optional caller-provided page sections or bounding boxes to focus
+  analysis
 - `save_report`, `report_title`
 - `return_full_report`
 - `report_format`: `markdown` or `json`
+- `language`: `en` or `ja`; omit for English
 
 Use `perspective: "Overall"` for visual/layout; `"Text"` for copy/content.
 
@@ -47,9 +57,12 @@ Use to set user defaults before repeated comparisons.
 - `list_reports({ limit?, cursor? })`
 - `get_report({ report_id })`
 - `delete_report({ report_id })`
-- `export_report({ report_id, format })`
+- `export_report({ report_id, format, sections?, statuses? })`
 
 Export formats: `json`, `markdown`, `csv`, `html`. PDF is web-client only.
+`sections` can include `metadata`, `summary`, `text_analysis`, and
+`visual_analysis`. `statuses` can include `Same`, `Changed`, `Added`, and
+`Removed`.
 
 ## Resources
 

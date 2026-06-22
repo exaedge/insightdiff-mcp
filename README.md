@@ -136,6 +136,25 @@ response includes the raw API key.
 - `delete_report`: remove a saved report from the active list.
 - `export_report`: export a saved report as JSON, Markdown, CSV, or HTML.
 
+### Tool Input Notes
+
+`take_screenshot` accepts optional `viewport`, `full_page`, `wait_until`,
+`delay_ms`, `scroll_to_bottom`, `dismiss_cookie_consent`, `extract_text`, and
+`auth`. `auth` is target-site auth for one screenshot request only, not the MCP
+API key. Supported `auth.type` values are `basic`, `token`, `api_key`, `cookie`,
+and `custom_headers`.
+
+`compare_pages` requires `image1_base64`, `image2_base64`, and `perspective`.
+Optional fields include `image1_name`, `image2_name`, `image1_text`,
+`image2_text`, `scopes`, `save_report`, `report_title`, `return_full_report`,
+`report_format`, and `language`. `perspective` is `Overall` or `Text`.
+`report_format` is `markdown` or `json`. `language` is `en` or `ja`.
+
+`export_report` accepts `report_id`, `format`, `sections`, and `statuses`.
+Formats are `json`, `markdown`, `csv`, and `html`. `sections` can include
+`metadata`, `summary`, `text_analysis`, and `visual_analysis`. `statuses` can
+include `Same`, `Changed`, `Added`, and `Removed`.
+
 ## Resources
 
 - `insightdiff://usage/monthly`: monthly usage and credit state.
