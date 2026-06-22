@@ -1,0 +1,29 @@
+{
+  "skill_name": "insightdiff-mcp",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use InsightDiff MCP to compare our staging homepage and production homepage at desktop size, save the report, and summarize only material visual regressions.",
+      "expected_output": "Uses take_screenshot twice with matching viewport/timing, compare_pages with Overall, saves report, summarizes regressions and report id.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have an uploaded private-page screenshot and a public production URL. Verify the screenshot against production with insightDiff and keep the response compact.",
+      "expected_output": "Uses uploaded image base64 path for the private-page screenshot, captures public URL, compare_pages with return_full_report false, no attempt to screenshot a private URL.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Check whether the copy changed between these two pages. Use text-focused comparison and export the result as Markdown.",
+      "expected_output": "Captures both pages with extract_text true, compares with Text perspective, exports saved report as markdown.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Find my latest MCP-created report, export it as standalone HTML, and do not delete anything.",
+      "expected_output": "Uses list_reports then get/export_report with html; does not call delete_report.",
+      "files": []
+    }
+  ]
+}
