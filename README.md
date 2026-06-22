@@ -1,9 +1,10 @@
-# InsightDiff MCP
+# insightDiff MCP
 
-Public setup guide, examples, and optional agent skill for the hosted
-InsightDiff MCP server.
+insightDiff is a visual comparison service for websites and screenshots.
+This repo provides MCP setup guidance and agent workflow support for page
+capture, screenshot comparison, and report review.
 
-InsightDiff MCP is a remote MCP endpoint. Users connect their MCP client to:
+Users connect their MCP client to:
 
 ```text
 https://insightdiff.exaedge.ai/mcp
